@@ -272,8 +272,10 @@ h1 {
   margin: 0;
 }
 
-/* sal animation 일단 끔. */
 /* sal animation */
-/* [data-sal='slide-up-10'] { */
-/*   transform: translateY(10%); */
-/* } */
+/* gatsby-plugin-scroll-reveal 플러그인을 꺼버리고,
+   react component에 설정값을 남겨두면
+   이 css rule 때문에 dom이 깨져 보인다. */
+[data-sal='slide-up-10'] {
+  transform: translateY(10%);
+}
