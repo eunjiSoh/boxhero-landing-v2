@@ -273,8 +273,14 @@ h1 {
   margin: 0;
 }
 
+[data-sal] {
+  --sal-duration: 1s;
+  --sal-delay: 0;
+}
+
 [data-sal="slide-up-image"] {
   transform: translateY(5%);
+  --sal-duration: 1.3s;
 }
 
 [data-sal="slide-up-image-piano"] {
