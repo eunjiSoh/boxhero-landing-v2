@@ -2,12 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 import Img from "gatsby-image";
 import BackgroundImage from "gatsby-background-image";
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Dot } from 'pure-react-carousel';
-import ScrollContainer from 'react-indiana-drag-scroll';
-import { Link, Trans } from '@jbseo/gatsby-plugin-react-i18next';
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+  DotGroup,
+  Dot,
+} from "pure-react-carousel";
+import ScrollContainer from "react-indiana-drag-scroll";
+import { Link, Trans } from "@jbseo/gatsby-plugin-react-i18next";
 // js
-import DesktopLayout from "../components/desktop-layout"
-import { Container1024, Padding, WithCurrentSlide, ExternalLinkWithQuery } from "../components/common";
+import DesktopLayout from "../components/desktop-layout";
+import {
+  Container1024,
+  Padding,
+  WithCurrentSlide,
+  ExternalLinkWithQuery,
+} from "../components/common";
 import * as constants from "../components/constants";
 // css
 import styles from "./desktop-index.module.css";
@@ -21,9 +34,9 @@ import svgSmallRight from "../images/smallright.svg";
 import svgSwipeLeft from "../images/swipeleft.svg";
 import svgSwipeRight from "../images/swiperight.svg";
 // page transition
-import { TransitionUp, TransitionImage, TransitionPiano } from "../transition"
+import { TransitionWrapper } from "../transition";
 
-const Top = ({data, t}) => (
+const Top = ({ data, t }) => (
   <BackgroundImage
     Tag="div"
     className={styles.topContainer}
@@ -32,106 +45,81 @@ const Top = ({data, t}) => (
   >
     <Container1024 className={styles.topContentContainer}>
       <div className={styles.topLeftContainer}>
-        <TransitionUp
-          is_desktop= {true}
-          item={
-          <img src={svgVolt} alt={t("index:topIconAlt")} />
-        }
-        />
+        <img data-sal="slide-up" src={svgVolt} alt={t("index:topIconAlt")} />
+
         <Padding y={10} />
-        <div className={styles.topLeftTitle}>
-          <TransitionUp item={
+        <div className={styles.topLeftTitle} data-sal="slide-up">
           <Trans i18nKey="index:topTitle" />
-          } />
         </div>
         <Padding y={30} />
-        <div className={styles.topLeftDescription}>
-          <TransitionUp item={
+        <div className={styles.topLeftDescription} data-sal="slide-up">
           <Trans i18nKey="index:topDesc" />
-          } />
         </div>
         <Padding y={30} />
         <ExternalLinkWithQuery href={constants.urlStart}>
-          <TransitionUp
-            item={
-              <button className={styles.startNowButton}>
-                {t("index:topStartNowButton")}
-              </button>
-            }
-          />
+          <button className={styles.startNowButton} data-sal="slide-up">
+            {t("index:topStartNowButton")}
+          </button>
         </ExternalLinkWithQuery>
         <Padding y={161} />
       </div>
-      <div className={styles.topRightContainer}>
-        <TransitionImage
-          item={
-          <Img fixed={data.homeTopRight.childImageSharp.fixed} />
-        }
-        />
+      <div className={styles.topRightContainer} data-sal="slide-up-image">
+        <Img fixed={data.homeTopRight.childImageSharp.fixed} />
       </div>
     </Container1024>
   </BackgroundImage>
 );
 
-const KeyFeature = ({isDarkBg, icon, iconAlt, title, desc, subTitle, subDesc, detailUrl, image, linkDetail}) => (
-  <div className={`${styles.keyFeatureContainer} ${isDarkBg ? styles.darkBg : ""}`}>
+const KeyFeature = ({
+  isDarkBg,
+  icon,
+  iconAlt,
+  title,
+  desc,
+  subTitle,
+  subDesc,
+  detailUrl,
+  image,
+  linkDetail,
+}) => (
+  <div
+    className={`${styles.keyFeatureContainer} ${isDarkBg ? styles.darkBg : ""}`}
+  >
     <Container1024 className={styles.keyFeatureContentContainer}>
       <div className={styles.keyFeatureLeftContainer}>
-        <TransitionUp item={
-        <img src={icon} alt={iconAlt} />
-        } />
+        <img src={icon} alt={iconAlt} data-sal="slide-up-image" />
         <Padding y={20} />
-        <TransitionUp
-          item={
-          <div className={styles.keyFeatureLeftTitle}>
-            {title}
-          </div>
-        }
-        />
+        <div className={styles.keyFeatureLeftTitle} data-sal="slide-up">
+          {title}
+        </div>
         <Padding y={35} />
-        <TransitionUp
-          item={
-          <div className={styles.keyFeatureLeftDescription}>
-            {desc}
-          </div>
-        }
-        />
+        <div className={styles.keyFeatureLeftDescription} data-sal="slide-up">
+          {desc}
+        </div>
         <Padding y={40} />
-        <TransitionUp
-          item={
-          <div className={styles.keyFeatureLeftSubTitle}>
-            {subTitle}
-          </div>
-        }
-        />
-        <TransitionUp
-          item={
-          <div className={styles.keyFeatureLeftSubDesc}>
-            {subDesc}
-          </div>
-        }
-        />
+        <div className={styles.keyFeatureLeftSubTitle} data-sal="slide-up">
+          {subTitle}
+        </div>
+        <div className={styles.keyFeatureLeftSubDesc} data-sal="slide-up">
+          {subDesc}
+        </div>
         <Padding y={20} />
-        <div className={styles.keyFeatureDetail}>
-          <TransitionUp
-            item={
-              <Link to={detailUrl}>
-                {linkDetail}
-                <img
-                  src={svgSmallRightBlue}
-                  className={styles.rightArrow}
-                  alt={linkDetail}
-                />
-              </Link>
-            }
-          />
+        <div className={styles.keyFeatureDetail} data-sal="slide-up">
+          <Link to={detailUrl}>
+            {linkDetail}
+            <img
+              src={svgSmallRightBlue}
+              className={styles.rightArrow}
+              alt={linkDetail}
+            />
+          </Link>
         </div>
       </div>
-      <div className={styles.keyFeatureRightContainer}>
-        <TransitionImage item={
-        <Img fixed={image.childImageSharp.fixed}
-        />
-        } />
+      <div
+        className={styles.keyFeatureRightContainer}
+        data-sal="slide-up-image"
+      >
+        <Img fixed={image.childImageSharp.fixed} />
       </div>
     </Container1024>
   </div>
@@ -153,39 +141,27 @@ KeyFeature.defaultProps = {
   isDarkBg: false,
 };
 
-const TeamPlay = ({data, t}) => (
+const TeamPlay = ({ data, t }) => (
   <BackgroundImage
     Tag="section"
     className={styles.teamPlayContainer}
     fluid={data.homeTeamPlayBg.childImageSharp.fluid}
     backgroundColor="#6159F5"
   >
-    <TransitionUp
-      item={
-        <div className={styles.teamPlayTitle}>
-          {t("index:teamPlayTitle")}
-        </div>
-      }
-    />
-    <Padding y={40} />
-    <div className={styles.teamPlayDesc}>
-      <TransitionUp item={
-        <Trans i18nKey="index:teamPlayDesc" />
-      } />
+    <div className={styles.teamPlayTitle} data-sal="slide-up">
+      {t("index:teamPlayTitle")}
     </div>
-    <TransitionImage
-      item={
-        <div className={styles.teamImageFlex}>
-          <Img
-          fixed={data.teamPlay.childImageSharp.fixed}
-          />
-        </div>
-      }
-    />
+    <Padding y={40} />
+    <div className={styles.teamPlayDesc} data-sal="slide-up">
+      <Trans i18nKey="index:teamPlayDesc" />
+    </div>
+    <div className={styles.teamImageFlex} data-sal="slide-up-image">
+      <Img fixed={data.teamPlay.childImageSharp.fixed} />
+    </div>
   </BackgroundImage>
 );
 
-const Customers = ({data, t, language}) => {
+const Customers = ({ data, t, language }) => {
   const customerData = [
     {
       title: t("index:customerData1Title"),
@@ -193,13 +169,13 @@ const Customers = ({data, t, language}) => {
       link: t("index:customerData1Link"),
     },
     // 영문 문서가 없어서 한글에서만 추가.
-    (language === "ko"
+    language === "ko"
       ? {
           title: t("index:customerData2Title"),
           img: data.customerFasion.childImageSharp.fixed,
           link: t("index:customerData2Link"),
         }
-      : null),
+      : null,
     {
       title: t("index:customerData3Title"),
       img: data.customerCosmetics.childImageSharp.fixed,
@@ -229,34 +205,29 @@ const Customers = ({data, t, language}) => {
       title: t("index:customerData8Title"),
       img: data.customerLocation.childImageSharp.fixed,
       link: t("index:customerData8Link"),
-    }
+    },
   ].filter(item => item);
   return (
     <div className={styles.customersContainer}>
-      <div className={styles.customersTitle}>
-        <TransitionUp item={
+      <div className={styles.customersTitle} data-sal="slide-up">
         <Trans i18nKey="index:customerTitle" />
-        } />
       </div>
       <Padding y={40} />
-      <TransitionUp
-        item={
-          <Link
-            to="/features/"
-            title={t("index:customerDetailLink")}
-          >
-            <button className={styles.customersDetailButton}>
-              {t("index:customerDetailLink")}
-              <Padding x={10} />
-              <img
-                src={svgSmallRight}
-                className={styles.rightArrow}
-                alt={t("index:customerDataDetailLink")}
-              />
-            </button>
-          </Link>
-        }
-      />
+      <Link
+        to="/features/"
+        title={t("index:customerDetailLink")}
+        data-sal="slide-up"
+      >
+        <button className={styles.customersDetailButton}>
+          {t("index:customerDetailLink")}
+          <Padding x={10} />
+          <img
+            src={svgSmallRight}
+            className={styles.rightArrow}
+            alt={t("index:customerDataDetailLink")}
+          />
+        </button>
+      </Link>
       <ScrollContainer
         className={styles.customersWrapper}
         vertical={false}
@@ -264,43 +235,39 @@ const Customers = ({data, t, language}) => {
         hideScrollbars={true}
       >
         {customerData.map((customer, index) => (
-          <TransitionPiano
-            key={index + customer.title}
-            delay={index * 100}
-            item={
-              <div
-                key={index}
-                className={styles.customerButton}>
-                <div className={styles.customerButtonBackground}>
-                  <Img
-                  fixed={customer.img}
-                  />
-                </div>
-                <div className={styles.customerButtonContent}>
-                  <span className={styles.customButtonContentNumber}>
-                    {("0" + (index + 1)).slice(-2)}
-                  </span>
-                  <span className={styles.customButtonContentTitle}>
-                    {customer.title}
-                  </span>
-                  <span className={styles.customButtonContentPadding}></span>
-                  <a
-                    href={customer.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={styles.customButtonContentLink}>
-                    {t("index:customerDataDetailLink")}
-                  </a>
-                </div>
-              </div>
-            }
-          />
+          <div
+            key={index}
+            className={styles.customerButton}
+            data-sal="slide-up"
+            data-sal-delay={index * 100}
+          >
+            <div className={styles.customerButtonBackground}>
+              <Img fixed={customer.img} />
+            </div>
+            <div className={styles.customerButtonContent}>
+              <span className={styles.customButtonContentNumber}>
+                {("0" + (index + 1)).slice(-2)}
+              </span>
+              <span className={styles.customButtonContentTitle}>
+                {customer.title}
+              </span>
+              <span className={styles.customButtonContentPadding}></span>
+              <a
+                href={customer.link}
+                target="_blank"
+                rel="noreferrer"
+                className={styles.customButtonContentLink}
+              >
+                {t("index:customerDataDetailLink")}
+              </a>
+            </div>
+          </div>
         ))}
         <Padding x={500} />
       </ScrollContainer>
     </div>
   );
-}
+};
 
 function genFeatureData(data, t) {
   return [
@@ -337,34 +304,36 @@ function genFeatureData(data, t) {
   ];
 }
 
-function renderDots(allData, {currentSlide, totalSlides, visibleSlides}) {
+function renderDots(allData, { currentSlide, totalSlides, visibleSlides }) {
   const dots = [];
   for (let i = 0; i < totalSlides; i += 1) {
-    const multipleSelected = i >= currentSlide && i < (currentSlide + visibleSlides);
+    const multipleSelected =
+      i >= currentSlide && i < currentSlide + visibleSlides;
     const selected = multipleSelected;
-    const slide = i >= totalSlides - visibleSlides ? totalSlides - visibleSlides : i;
+    const slide =
+      i >= totalSlides - visibleSlides ? totalSlides - visibleSlides : i;
     dots.push(
       <Dot
         key={i}
         slide={slide}
         selected={selected}
-        className={`${styles.slideDetailDot} ${selected ? styles.slideDetailDotSelected : ""}`}
+        className={`${styles.slideDetailDot} ${
+          selected ? styles.slideDetailDotSelected : ""
+        }`}
       >
         {allData[slide].title}
-      </Dot>,
+      </Dot>
     );
   }
   return dots;
 }
 
-const Features = ({data, t}) => {
+const Features = ({ data, t }) => {
   const featureData = genFeatureData(data, t);
   return (
     <div className={styles.featuresContainer}>
-      <div className={styles.featuresTitle}>
-        <TransitionUp item={
-          <Trans i18nKey="index:featuresTitle" />
-        } />
+      <div className={styles.featuresTitle} data-sal="slide-up">
+        <Trans i18nKey="index:featuresTitle" />
       </div>
       <Padding y={80} />
 
@@ -373,45 +342,27 @@ const Features = ({data, t}) => {
         naturalSlideHeight={360}
         totalSlides={featureData.length}
       >
-        <TransitionUp
-          item={
-            <DotGroup
-              className={styles.slideDetailDotGroup}
-              renderDots={(props) => renderDots(featureData, props)}
-            />
-          }
+        <DotGroup
+          data-sal="slide-up"
+          className={styles.slideDetailDotGroup}
+          renderDots={props => renderDots(featureData, props)}
         />
 
         <Padding y={80} />
 
         <div className={styles.slideAndNavButtons}>
           <ButtonBack className={styles.slideNavButton}>
-            <img
-              src={svgSwipeLeft}
-              alt={t("index:featuresNavBack")}
-            />
+            <img src={svgSwipeLeft} alt={t("index:featuresNavBack")} />
           </ButtonBack>
-          <TransitionImage
-            item={
-              <Slider className={styles.sliderWrapper}>
-                {featureData.map((data, index) => (
-                  <Slide
-                    key={index}
-                    index={index}>
-                    <Img
-                      fixed={data.img}
-                      alt={data.title}
-                    />
-                  </Slide>
-                ))}
-              </Slider>
-            }
-          />
+          <Slider className={styles.sliderWrapper} data-sal="slide-up">
+            {featureData.map((data, index) => (
+              <Slide key={index} index={index}>
+                <Img fixed={data.img} alt={data.title} />
+              </Slide>
+            ))}
+          </Slider>
           <ButtonNext className={styles.slideNavButton}>
-            <img
-              src={svgSwipeRight}
-              alt={t("index:featuresNavNext")}
-            />
+            <img src={svgSwipeRight} alt={t("index:featuresNavNext")} />
           </ButtonNext>
         </div>
 
@@ -419,23 +370,20 @@ const Features = ({data, t}) => {
 
         <div className={styles.slideDetailLinkContainer}>
           <WithCurrentSlide>
-            { currentSlide => (
-              <TransitionUp
-                item={
-                  <Link
-                    to={featureData[currentSlide].link}
-                    title={featureData[currentSlide].title}
-                    className={styles.slideDetailLink}
-                  >
-                    {t("index:featuresDetailLink")}
-                    <img
-                      src={svgSmallRightBlue}
-                      className={styles.rightArrow}
-                      alt={t("index:featuresDetailLink")}
-                    />
-                  </Link>
-                }
-              />
+            {currentSlide => (
+              <Link
+                data-sal="slide-up"
+                to={featureData[currentSlide].link}
+                title={featureData[currentSlide].title}
+                className={styles.slideDetailLink}
+              >
+                {t("index:featuresDetailLink")}
+                <img
+                  src={svgSmallRightBlue}
+                  className={styles.rightArrow}
+                  alt={t("index:featuresDetailLink")}
+                />
+              </Link>
             )}
           </WithCurrentSlide>
         </div>
@@ -446,67 +394,58 @@ const Features = ({data, t}) => {
 
 const DesktopIndex = ({ data, language, t }) => {
   return (
-    <DesktopLayout
-      isFloatMenu={true}
-      closingEmoji={data.coffee}
-      closingMsg={t("index:closingMsg")}
-    >
-      <Top
-        data={data}
-        t={t}
-      />
+    <TransitionWrapper>
+      <DesktopLayout
+        isFloatMenu={true}
+        closingEmoji={data.coffee}
+        closingMsg={t("index:closingMsg")}
+      >
+        <Top data={data} t={t} />
 
-      <KeyFeature
-        icon={svgAddProduct}
-        iconAlt={t("index:keyFeature1IconAlt")}
-        title={<Trans i18nKey="index:keyFeature1Title" />}
-        desc={<Trans i18nKey="index:keyFeature1Desc" />}
-        subTitle={<Trans i18nKey="index:keyFeature1SubTitle"/>}
-        subDesc={<Trans i18nKey="index:keyFeature1SubDesc" />}
-        detailUrl={`/about/#${constants.idAboutFeatureAddProduct}`}
-        image={data.feature1}
-        linkDetail={t("index:keyFeatureLinkDetail")}
-      />
+        <KeyFeature
+          icon={svgAddProduct}
+          iconAlt={t("index:keyFeature1IconAlt")}
+          title={<Trans i18nKey="index:keyFeature1Title" />}
+          desc={<Trans i18nKey="index:keyFeature1Desc" />}
+          subTitle={<Trans i18nKey="index:keyFeature1SubTitle" />}
+          subDesc={<Trans i18nKey="index:keyFeature1SubDesc" />}
+          detailUrl={`/about/#${constants.idAboutFeatureAddProduct}`}
+          image={data.feature1}
+          linkDetail={t("index:keyFeatureLinkDetail")}
+        />
 
-      <KeyFeature
-        isDarkBg={true}
-        icon={svgCounting}
-        iconAlt={t("index:keyFeature2IconAlt")}
-        title={<Trans i18nKey="index:keyFeature2Title" />}
-        desc={<Trans i18nKey="index:keyFeature2Desc" />}
-        subTitle={t("index:keyFeature2SubTitle")}
-        subDesc={<Trans i18nKey="index:keyFeature2SubDesc" />}
-        detailUrl={`/about/#${constants.idAboutFeatureTx}`}
-        image={data.feature2}
-        linkDetail={t("index:keyFeatureLinkDetail")}
-      />
+        <KeyFeature
+          isDarkBg={true}
+          icon={svgCounting}
+          iconAlt={t("index:keyFeature2IconAlt")}
+          title={<Trans i18nKey="index:keyFeature2Title" />}
+          desc={<Trans i18nKey="index:keyFeature2Desc" />}
+          subTitle={t("index:keyFeature2SubTitle")}
+          subDesc={<Trans i18nKey="index:keyFeature2SubDesc" />}
+          detailUrl={`/about/#${constants.idAboutFeatureTx}`}
+          image={data.feature2}
+          linkDetail={t("index:keyFeatureLinkDetail")}
+        />
 
-      <KeyFeature
-        icon={svgDashboard}
-        iconAlt={t("index:keyFeature3IconAlt")}
-        title={<Trans i18nKey="index:keyFeature3Title"/>}
-        desc={<Trans i18nKey="index:keyFeature3Desc" />}
-        subTitle={t("index:keyFeature3SubTitle")}
-        subDesc={<Trans i18nKey="index:keyFeature3SubDesc" />}
-        detailUrl={`/about/#${constants.idAboutFeatureStatus}`}
-        image={data.feature3}
-        linkDetail={t("index:keyFeatureLinkDetail")}
-      />
+        <KeyFeature
+          icon={svgDashboard}
+          iconAlt={t("index:keyFeature3IconAlt")}
+          title={<Trans i18nKey="index:keyFeature3Title" />}
+          desc={<Trans i18nKey="index:keyFeature3Desc" />}
+          subTitle={t("index:keyFeature3SubTitle")}
+          subDesc={<Trans i18nKey="index:keyFeature3SubDesc" />}
+          detailUrl={`/about/#${constants.idAboutFeatureStatus}`}
+          image={data.feature3}
+          linkDetail={t("index:keyFeatureLinkDetail")}
+        />
 
-      <TeamPlay
-        data={data}
-        t={t} />
+        <TeamPlay data={data} t={t} />
 
-      <Customers
-        data={data}
-        t={t}
-        language={language}
-      />
+        <Customers data={data} t={t} language={language} />
 
-      <Features
-        data={data}
-        t={t} />
-    </DesktopLayout>
+        <Features data={data} t={t} />
+      </DesktopLayout>
+    </TransitionWrapper>
   );
 };
 
