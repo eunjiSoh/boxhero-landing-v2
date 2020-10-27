@@ -5,7 +5,7 @@
 
 .container320 {
   margin: 0 auto;
-  width: 320px;
+  text-align: center;
 }
 
 .simpleTopTitle {
@@ -55,14 +55,14 @@ html[lang="ko"] .mobileSimpleTopDesc {
   align-items: center;
   padding: 14px 0px;
   cursor: pointer;
-
   font-size: 16px;
   line-height: 1;
   letter-spacing: -0.16px;
   color: var(--color-font-darker);
+  text-align: left;
 }
 
-.dropDownQNATitle > img {
+.dropDownQNATitle>img {
   margin-left: 6px;
 }
 
@@ -84,13 +84,13 @@ html[lang="ko"] .mobileSimpleTopDesc {
 
 
 /* switch */
+
 @value bg-disabled-color: #e0e0e3;
 @value bg-disabled-border-color: #cbccd3;
 @value bg-enabled-color: rgba(60, 185, 160, 0.2);
 @value bg-enabled-border-color: #3cb9a0;
 @value lever-disabled-color: #fff;
 @value lever-enabled-color: var(--color-ribbon-green);
-
 .switch {
   display: inline-block;
   position: relative;
@@ -109,7 +109,9 @@ html[lang="ko"] .mobileSimpleTopDesc {
   z-index: 0;
 }
 
+
 /* Unchecked */
+
 .switchLabel {
   display: block;
   padding: 0 0 0 48px;
@@ -145,18 +147,22 @@ html[lang="ko"] .mobileSimpleTopDesc {
   transition-property: left, background-color;
 }
 
+
 /* Checked */
-.switchInput:checked + .switchLabel:before {
+
+.switchInput:checked+.switchLabel:before {
   background-color: bg-enabled-color;
   border-color: bg-enabled-border-color;
 }
 
-.switchInput:checked + .switchLabel:after {
+.switchInput:checked+.switchLabel:after {
   left: 25px;
   background-color: lever-enabled-color;
 }
 
+
 /* https://codepen.io/nxworld/pen/oLdoWb */
+
 .ribbon {
   width: 70px;
   height: 70px;
